@@ -15,6 +15,8 @@ To uninstall package just do a normal pacman uninstall command (e.g. `sudo pacma
 
 If you're perfectionist you actually can - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
 
+**Important:** you must use `git lfs clone <URL>`, because .deb package is larger than 100MB and can't be uploaded to github normally
+
 ## Known issues:
 
 If you're a **KDE Plasma user** you may be missing some icons ~~(but who cares if you're starting it from terminal)~~
