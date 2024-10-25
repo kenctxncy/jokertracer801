@@ -6,20 +6,23 @@ A Cisco Packet Tracer 8.0.1 version pacman package for CFUV opensource people
 
 Download .pkg.tar.zst pacman package and run command:
 
-`sudo pacman -U  `***packagename***`-`***packageversion***`-`***arch***`.pkg.tar.zst`
+`sudo pacman -U packagename-packageversion-arch.pkg.tar.zst`
 
-To uninstall package just do a normal pacman uninstall command (e.g. `sudo pacman -Rcns  `***packagename***)
+To uninstall package just do a normal pacman uninstall command (e.g. `sudo pacman -Rcns packagename`)
 
 
-## Or you can **build from source**
+## Or you can **build from source** (a better option)
 
-If you're perfectionist you actually can - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
+Wayland users *must* download source repo and build with `makepkg -si` - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
 
-**Important:** you must use `git lfs clone <URL>`, because .deb package is larger than 100MB and can't be uploaded to github normally
+**Important:** you need to use `git lfs clone <URL>`, because some file (.deb package) are larger than 100MB and can't be uploaded to github normally
+
+**If you experience checksum validation troubles** you can simply ignore them with a flag or create an issue idk
+
 
 ## Known issues:
 
-If you're a **KDE Plasma user** you may be missing some icons ~~(but who cares if you're starting it from terminal)~~
+If you're a **KDE Plasma user** you may be missing some icons ~~(but who cares if you're starting packettracer from terminal)~~
 
 Didn't happen to me but the following commands might fix this issue:
 
@@ -39,9 +42,13 @@ If you're running X11 everything should work smoothly
 
 But, as always, wayland users need to adapt (especially for legacy packages such as this version of packettracer)
 
-So after setting `export QT_QPA_PLATFORM=xcb` packettracer ***will start*** and `/usr/bin/packettracer: line 8:  3441 Aborted     (core dumped) ./PacketTracer "$@" > /dev/null 2>&1` error will begone *(if you still can't use packettracer try running it with* `--no-sandbox` *flag*)
+So after setting `export QT_QPA_PLATFORM=xcb` packettracer ***will start*** and 
 
-You can also add exec command to your \*.desktop files *(provided .pkg file is not as* **beautiful** *as it can be, so for a "perfect install", if you want, you can download the source folder, build and automate the envvars by yourself (gl with [archwiki,org](https://archwiki.org)).
+`/usr/bin/packettracer: line 8:  3441 Aborted     (core dumped) ./PacketTracer "$@" > /dev/null 2>&1`
+
+error will begone *(if you still can't use packettracer try running it with* `--no-sandbox` *flag*)
+
+You can also add exec command to your \*.desktop files *(provided .pkg file isn't tuned for your system , so for a "perfect install" you should download the source folder, build and automate the envvars by yourself (gl with [archwiki.org](https://archwiki.org)).
 So the .desktop files will be in your PKGBUILD folder, e.g.* `~/Downloads/cisco-packet-tracer-801/...` *)*:
 
 Edit the following lines:
