@@ -8,6 +8,7 @@ A Cisco Packet Tracer 8.0.1 version pacman package for CFUV opensource people.
 
 ```bash
 git clone <URL>
+cd /path/to/repo
 git lfs install
 git lfs pull
 ```
