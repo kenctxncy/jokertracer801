@@ -1,23 +1,40 @@
 # jokertracer1488
 
-A Cisco Packet Tracer 8.0.1 version pacman package for CFUV opensource people
+A Cisco Packet Tracer 8.0.1 version pacman package for CFUV opensource people.
 
 ## Installation
 
-Download .pkg.tar.zst pacman package and run command:
+#### **The way it should've been**:
 
-`sudo pacman -U packagename-packageversion-arch.pkg.tar.zst`
+```bash
+git clone <URL>
+git lfs install
+git lfs pull
+```
+(any other **method** will cause corrupt or wrong sha512sum of large files)
 
-To uninstall package just do a normal pacman uninstall command (e.g. `sudo pacman -Rcns packagename`)
+And then follow these steps:
+
+ - On .pkg.tar.zst run command:
+
+   `sudo pacman -U packagename-packageversion-arch.pkg.tar.zst`
+
+ -  - To uninstall this package just do a normal pacman uninstall command (e.g. `sudo pacman -Rcns packagename`)
 
 
 ## Or you can **build from source** (a better option)
 
-Wayland users *must* download source repo and build with `makepkg -si` - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
+Wayland users *(and others)* can download source repo and build with `makepkg -si` - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
 
-**Important:** you need to use `git lfs clone <URL>`, because some file (.deb package) are larger than 100MB and can't be uploaded to github normally
+**Important:** you need to use **the same method** as was described above, because large files will be broken and have wrong checksums.
 
 **If you experience checksum validation troubles** you can simply ignore them with a flag or create an issue idk
+
+#### **The way it turned out**:
+
+Due to (((Git LFS data quota issue))), download from these repositories is ~~possible only few times a month~~ problematic. 
+
+Right now I'm looking for workarounds, stay tuned.
 
 
 ## Known issues:
@@ -38,17 +55,17 @@ sudo rmdir -p "${pkgdir}/usr/share/icons/gnome/48x48/mimetypes"
 
 ### **Wayland session issues**
 
-If you're running X11 everything should work smoothly
+If you're running X11 everything should work smoothly.
 
-But, as always, wayland users need to adapt (especially for legacy packages such as this version of packettracer)
+But, as always, wayland users need to adapt (especially for legacy packages such as this version of packettracer).
 
 So after setting `export QT_QPA_PLATFORM=xcb` packettracer ***will start*** and 
 
 `/usr/bin/packettracer: line 8:  3441 Aborted     (core dumped) ./PacketTracer "$@" > /dev/null 2>&1`
 
-error will begone *(if you still can't use packettracer try running it with* `--no-sandbox` *flag*)
+error will begone *(if you still can't use packettracer try running it with* `--no-sandbox` *flag*).
 
-You can also add exec command to your \*.desktop files *(provided .pkg file isn't tuned for your system , so for a "perfect install" you should download the source folder, build and automate the envvars by yourself (gl with [archwiki.org](https://archwiki.org)).
+You can also add exec command to your \*.desktop files when building from source *(provided .pkg file isn't tuned for your system, so for a "perfect install" you should download the source folder, build and automate the envvars by yourself (gl with [archwiki.org](https://archwiki.org)).
 So the .desktop files will be in your PKGBUILD folder, e.g.* `~/Downloads/cisco-packet-tracer-801/...` *)*:
 
 Edit the following lines:
