@@ -74,4 +74,20 @@ Edit the following lines:
  - in cisco-pt.desktop and cisco-ptsa.desktop:
    `Exec=env QT_QPA_PLATFORM=xcb /opt/packettracer/packettracer %f`
 
+### **Application interface is a mess**
+
+Happened to me on KDE Plasma. This issue is caused by gnome, which is native for the .bed package we're building from. If that didnt work, then it may also be a mismatch of application's gtk theme (which is configured in ~/.config/gtkrc file) and your selected desktop theme. To fix this you need to again set your env vars when starting from terminal or edit your \*.desktop files in PKGBUILD folder:
+
+First, try:
+
+ - `env XDG_CURRENT_DESKTOP=GNOME packettracer`
+
+if it worked, you may add this variable in your .desktop `Exec=...` line.
+
+**If it didn't**, then try setting a light theme variation of your current one. In case of KDE, it was setting a QT theme:
+
+ - `env XDG_CURRENT_DESKTOP=GNOME QT_QPA_PLATFORMTHEME=<YOURTHEME> (check yours in /usr/share/themes/...)`
+
+**If it's still not working**, try setting gtk theme to default, by adding `GTK_THEME=Default` to your`env` terminal/Exec line
+
 And you're done
