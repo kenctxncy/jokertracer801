@@ -76,7 +76,7 @@ Edit the following lines:
 
 ### **Application interface is a mess**
 
-Happened to me on KDE Plasma. This issue is caused by gnome, which is native for the .bed package we're building from. If that didnt work, then it may also be a mismatch of application's gtk theme (which is configured in ~/.config/gtkrc file) and your selected desktop theme. To fix this you need to again set your env vars when starting from terminal or edit your \*.desktop files in PKGBUILD folder:
+Happened to me on KDE Plasma. This issue is caused by gnome, which is native for the .deb package we're building from. If that didnt work, then it may also be a mismatch of application's gtk theme (which is configured in ~/.config/gtkrc file) and your selected desktop theme. To fix this you need to again set your env vars when starting from terminal or edit your \*.desktop files in PKGBUILD folder:
 
 First, try:
 
