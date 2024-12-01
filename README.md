@@ -6,6 +6,12 @@ A Cisco Packet Tracer 8.0.1 version pacman package for CFUV opensource people.
 
 #### **The way it should've been**:
 
+##### ATTENTION: THIS METHOD OF INSTALL IS PURE PROFANITY AND ALSO DEPRECATED (I don't have a clue about the containments of the .pkg archive)
+
+Also will leave these changes to for them to be in repo history lol
+
+**Appropriate** method of cloning this repo (with all the git lfs limited stuff)
+
 ```bash
 git clone <URL>
 cd /path/to/repo
@@ -14,7 +20,7 @@ git lfs pull
 ```
 (any other **method** will cause corrupt or wrong sha512sum of large files)
 
-And then follow these steps:
+And after you **build your own pacman package** follow these steps:
 
  - On .pkg.tar.zst run command:
 
@@ -23,7 +29,7 @@ And then follow these steps:
  -  - To uninstall this package just do a normal pacman uninstall command (e.g. `sudo pacman -Rcns packagename`)
 
 
-## Or you can **build from source** (a better option)
+## **BUILD FROM SOURCE** (**ONLY** option)
 
 Wayland users *(and others)* can download source repo and build with `makepkg -si` - [the source repo (packettracer folder)](https://github.com/kenctxncy/cisco-packet-tracer-801)
 
@@ -36,6 +42,8 @@ Wayland users *(and others)* can download source repo and build with `makepkg -s
 Due to (((Git LFS data quota issue))), download from these repositories is ~~possible only few times a month~~ problematic. 
 
 Right now I'm looking for workarounds, stay tuned.
+
+**UPD:** Still looking for workarounds, but who cares if you can find all the stuff (.deb package to build from source) on archive.org or whatever
 
 
 ## Known issues:
@@ -91,3 +99,7 @@ if it worked, you may add this variable in your .desktop `Exec=...` line.
 **If it's still not working**, try setting gtk theme to default, by adding `GTK_THEME=Default` to your`env` terminal/Exec line
 
 And you're done
+
+### **Packet Tracer Activity docs won't render**
+
+Discovered recently. This is a flaw in .deb ubuntu package. It's over. There is nothing we can do... Just install a fresh version in which HTML render isn't broken. Also try to run PT using wine ~~or even install windows~~
