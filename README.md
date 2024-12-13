@@ -72,7 +72,7 @@ So after setting `export QT_QPA_PLATFORM=xcb` packettracer ***will start*** and
 
 `/usr/bin/packettracer: line 8:  3441 Aborted     (core dumped) ./PacketTracer "$@" > /dev/null 2>&1`
 
-error will begone *(if you still can't use packettracer try running it with* `--no-sandbox` *flag*).
+error will begone.
 
 You can also add exec command to your \*.desktop files when building from source *(provided .pkg file isn't tuned for your system, so for a "perfect install" you should download the source folder, build and automate the envvars by yourself (gl with [archwiki.org](https://archwiki.org)).
 So the .desktop files will be in your PKGBUILD folder, e.g.* `~/Downloads/cisco-packet-tracer-801/...` *)*:
@@ -100,6 +100,21 @@ if it worked, you may add this variable in your .desktop `Exec=...` line.
 
 And you're done
 
-### **Packet Tracer Activity docs won't render**
+### **Packet Tracer Activity docs and Browser won't render**
 
-Discovered recently. This is a flaw in .deb ubuntu package. It's over. There is nothing we can do... Just install a fresh version in which HTML render isn't broken. Also try to run PT using wine ~~or even install windows~~
+This is fixed by editing the packettracer script:
+
+`sudo nvim /opt/packettracer/bin/packettracer` (or whatever text editor you use)
+Add `--no-sandbox` flag as follows
+```bash
+#!/bin/bash
+
+echo Starting Packet Tracer 8.0.1
+
+PTDIR=/opt/packettracer
+export LD_LIBRARY_PATH=/opt/packettracer/bin
+pushd /opt/packettracer/bin > /dev/null
+./PacketTracer "$@" --no-sandbox > /dev/null 2>&1
+popd > /dev/null
+```
+Program should work properly.
